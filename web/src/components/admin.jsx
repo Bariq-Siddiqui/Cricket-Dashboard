@@ -10,16 +10,20 @@ const dev = 'http://localhost:5000';
 const baseURL = window.location.hostname.split(':')[0] === 'localhost' ? dev : ""
 function Admin() {
     const [posts, setPosts] = useState([]);
+    // const [score, setScore] = useState({
+    //     tournament:""
+    // });
     useEffect(() => {
         axios.get(`${baseURL}/api/v1/posts?page=0`)
             .then((res) => {
                 console.log("res +++: ", res.data);
                 setPosts(res.data)
+                // setScore(res.data.tournament)
 
             })
     }, [])
     useEffect(() => {
-        const socket = io("http://localhost:5000"); // to connect with locally running Socker.io server
+        const socket = io(); // to connect with locally running Socker.io server
 
         socket.on('connect', function () {
             console.log("connected to server")
@@ -95,8 +99,6 @@ function Admin() {
                 bowlerCOver: values.bowlerCOver,
                 description: values.description,
                 commentary: values.commentary
-            }, {
-                withCredentials: true
             })
                 .then((res) => {
                     console.log("res: ", res.data);

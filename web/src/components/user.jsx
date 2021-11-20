@@ -24,7 +24,7 @@ function User() {
             })
     }, [])
     useEffect(() => {
-        const socket = io("http://localhost:5000"); // to connect with locally running Socker.io server
+        const socket = io(); // to connect with locally running Socker.io server
 
         socket.on('connect', function () {
             console.log("connected to server")
