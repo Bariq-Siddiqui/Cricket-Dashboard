@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+.bgImg{
+  background-image: url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y3JpY2tldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.tableColor{
+  text-shadow: 2px 2px #2196f3 !important;
+  color: white !important;
+  font-size: 2rem !important;
+  font-weight: bolder !important;
+}
+.tableColor1{
+  text-shadow: 1px 1px #2196f3 !important;
+  color: white !important;
+  font-size: 1rem !important;
+  font-weight: bolder !important;
+}
+.tableColor2{
+  text-shadow: 1px 1px #2196f3 !important;
+  color: white !important;
+  font-size: 1.1rem !important;
+  font-weight: bolder !important;
+}

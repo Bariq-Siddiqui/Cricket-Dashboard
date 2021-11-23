@@ -142,6 +142,15 @@ app.get("/api/v1/posts", (req, res) => {
             res.send(data);
         });
 });
+// app.get("/api/v1/getscore", (req, res) => {
+//   cricketInfo
+//     .findOne({})
+//     .sort({ _id: "desc" })
+//     .exec((err, data) => {
+//       res.send(data);
+//       // console.log(data);
+//     });
+// });
 
 app.get("/**", (req, res, next) => {
     res.sendFile(path.join(__dirname, "./web/build/index.html"))
