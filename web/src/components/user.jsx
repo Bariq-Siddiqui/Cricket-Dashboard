@@ -89,10 +89,13 @@ function User() {
                                     <TableCell className="tableColor1" align="right">{posts[0]?.bowlerC} &nbsp;&nbsp;&nbsp; {posts[0]?.bowlerCW}/{posts[0]?.bowlerCRun}({posts[0]?.bowlerCOver})</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className="tableColor1" align="center" colSpan="5">Description:{posts[0]?.description}</TableCell>
+                                    <TableCell className="tableColor1" align="center" colSpan="5">{posts[0]?.description}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell className="tableColor1" align="center" colSpan="5">Comentary:{posts[0]?.commentary} {posts[0]?.teamBRun}</TableCell>
+                                    <TableCell className="tableColor1" align="center" colSpan="5">{posts[0]?.commentary}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell className="tableColor1" align="center" colSpan="5">Target: {parseInt(posts[0]?.teamBRun)+1}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell className="tableColor1" align="center" colSpan="5">{posts[0]?.teamA} need to {(parseInt(posts[0]?.teamBRun)+1)-(posts[0]?.teamARun)} runs</TableCell>
