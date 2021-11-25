@@ -16,6 +16,11 @@ import { Box } from '@mui/system';
 import Paper from '@mui/material/Paper';
 const dev = 'http://localhost:5000';
 const baseURL = window.location.hostname.split(':')[0] === 'localhost' ? dev : ""
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import Select from '@mui/material/Select';
+// import { useTheme } from '@mui/material/styles';
 function Admin() {
 const [posts, setPosts] = useState({
         tournament: "",
@@ -45,6 +50,139 @@ const [posts, setPosts] = useState({
         description: "",
         commentary: ""
 });
+const playerTeam={
+    Pakistan:[
+        "Sharjeel Khan",
+        "Baber Azam",
+        "Rizwan Khan",
+        "Fakhar Zaman",
+        "Haider Ali",
+        "Khushdil Shah",
+        "Mohammad Nawaz",
+        "Shadab Khan",
+        "Hassan Ali",
+        "Mohammad Waseem",
+        "Shaheen Afridi"
+    ],
+    Australia:[
+        "Aaron Finch",
+        "David Warner",
+        "Steve Smith",
+        "Glenn Maxwell",
+        "Marcus Stoinis",
+        "Matthew Wade",
+        "Ashton Agar",
+        "Pat Cummins",
+        "Mitchell Starc",
+        "Adam Zampa",
+        "Josh Hazlewood"
+    ],
+    England:[
+        "Jason ROy",
+        "Jos Buttler",
+        "Dawid Malan",
+        "Jonny Bairstow",
+        "Eion Morgan",
+        "Liam Livingstone",
+        "Moeen Ali",
+        "Chris Woakes",
+        "Chris Jordan",
+        "Adil Rashid",
+        "Tymal Mills"
+    ],
+    "New Zealand":[
+        "Martin Guptill",
+        "Daryl Mitchell",
+        "Devon Conway",
+        "Kane Williamson",
+        "Glenn Phillips",
+        "Tim Seifert",
+        "Mitchell Santner",
+        "Adam Milne",
+        "Ish Sodhi",
+        "Trent Boult",
+        "Tim Southee"
+    ],
+    India:[
+        "KL Rahul",
+        "Rohit Sharma",
+        "Rishabh Pant",
+        "Hardik Pandya",
+        "Virat Kohli",
+        "Surya Kumar",
+        "Ravindra Jadeja",
+        "Ravichandran Ashwin",
+        "Shardul Thakur",
+        "Mohammad Shami",
+        "Jasprit Bumrah"
+    ],
+    "South Africa":[
+        "Quinton De Cock",
+        "Aiden Markaram",
+        "Reeza Hendricks",
+        "David Miller",
+        "Temba Bavuma",
+        "Bjorn Forttuin",
+        "Rassie van der Dussen",
+        "Tabraiz Shamsi",
+        "Anrich Nortje",
+        "Lungi Ngidi",
+        "Kagiso Rabada"
+    ],
+    Afghanistan:[
+        "Hazratullah Zazai",
+        "Mohammad Shahzad",
+        "Gulbadin Naib",
+        "Najibullah Zadran",
+        "Rahmanullah Gurbaz",
+        "Mohammad Nabi",
+        "Asghar Afghan",
+        "Karim Janat",
+        "Rashid Khan",
+        "Mujeeb Ur Rahman",
+        "Naveen ul Haq"
+    ],
+    Bangladesh:[
+        "Mohammad Naim",
+        "Liton Das",
+        "Najmul Hossain Shanto",
+        "Mushfiqur Rahim",
+        "Shakib Al Hasan",
+        "Mohmudullah",
+        "Soumya Sarkar",
+        "Afif Hossain",
+        "Taskin Ahmed",
+        "Nasum Ahmed",
+        "Shoriful Islam"
+    ],
+    "Sri Lanka":[
+        "Pathum Nissanka",
+        "Kusal Perera",
+        "Avishka Fernando",
+        "Dhananjaya de Silva",
+        "Dinesh Chandimal",
+        "Dasun Shanaka",
+        "Wanindu Hasaranga",
+        "Charith Asalanka",
+        "Chamika Karunaratne",
+        "Maheesh Theekshana",
+        "Binura Fernando"
+    ],
+    "West Indies":[
+        "Chris Gayle",
+        "Evin Lewis",
+        "Lendl Simmons",
+        "Andre Fletcher",
+        "Shimron Hetmyer",
+        "Nicholas Pooran",
+        "Kieron Pollard",
+        "Andre Russell",
+        "Dwayne Bravo",
+        "Jason Holder",
+        "Ravi Rampaul"
+    ]
+}
+
 const [score, setScore] = useState({
         tournament: "",
         tournamentDate: "",
@@ -73,6 +211,7 @@ const [score, setScore] = useState({
         description: "",
         commentary: ""
 });
+
     // useEffect(() => {
     //     axios.get(`${baseURL}/api/v1/posts?page=0`)
     //         .then((res) => {
@@ -278,8 +417,40 @@ const [score, setScore] = useState({
 
                                     <TableRow>
                                         <TableCell align="center">
-                                        <TextField
-                            color="secondary"
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <label style={{display: 'block'}}>
+                                                <strong>Team Batting</strong>
+                                            </label>
+                                            <select
+                                                name="teamA"
+                                                value={score.teamA}
+                                                onChange={(e) => {
+                                                    setScore((prev) => {
+                                                    return { ...prev, teamA: e.target.value }
+                                                    })
+                                                }}
+                                                style={{}}
+                                            >
+                                                <option value="" label="Select a Team" />
+                                                <option value="Pakistan" label="Pakistan" />
+                                                <option value="Australia" label="Australia" />
+                                                <option value="England" label="England" />
+                                                <option value="New Zealand" label="New Zealand" />
+                                                <option value="India" label="India" />
+                                                <option value="South Africa" label="South Africa" />
+                                                <option value="Afghanistan" label="Afghanistan" />
+                                                <option value="Bangladesh" label="Bangladesh" />
+                                                <option value="Sri Lanka" label="Sri Lanka" />
+                                                <option value="West Indies" label="West Indies" />
+                                            </select>
+
+                                        {/* <TextField
+                                        color="secondary"
                             id="outlined-basic"
                             label="Team A"
                             variant="standard"
@@ -297,10 +468,36 @@ const [score, setScore] = useState({
 
                             // error={formik.touched.teamA && Boolean(formik.errors.teamA)}
                             // helperText={formik.touched.teamA && formik.errors.teamA}
-                        />
+                        /> */}
                                         </TableCell>
                                         <TableCell align="center">
-                                        <TextField
+                                        <label style={{display: 'block'}}>
+                                                <strong>Team</strong>
+                                            </label>
+                                            <select
+                                                name="teamB"
+                                                value={score.teamB}
+                                                onChange={(e) => {
+                                                    setScore((prev) => {
+                                                    return { ...prev, teamB: e.target.value }
+                                                    })
+                                                }}
+                                                style={{}}
+                                            >
+                                                <option value="" label="Select a Team" />
+                                                <option value="Pakistan" label="Pakistan" />
+                                                <option value="Australia" label="Australia" />
+                                                <option value="England" label="England" />
+                                                <option value="New Zealand" label="New Zealand" />
+                                                <option value="India" label="India" />
+                                                <option value="South Africa" label="South Africa" />
+                                                <option value="Afghanistan" label="Afghanistan" />
+                                                <option value="Bangladesh" label="Bangladesh" />
+                                                <option value="Sri Lanka" label="Sri Lanka" />
+                                                <option value="West Indies" label="West Indies" />
+                                            </select>
+
+                                        {/* <TextField
                             
                             color="secondary"
                             id="outlined-basic"
@@ -320,7 +517,7 @@ const [score, setScore] = useState({
 
                             // error={formik.touched.teamB && Boolean(formik.errors.teamB)}
                             // helperText={formik.touched.teamB && formik.errors.teamB}
-                        />
+                        /> */}
                                         </TableCell>
                                     </TableRow>
 
@@ -390,6 +587,7 @@ const [score, setScore] = useState({
                 />
                                         </TableCell>
                                         <TableCell>
+
                                         <TextField
                             
                             color="secondary"
@@ -460,7 +658,24 @@ const [score, setScore] = useState({
                                     
                                     <TableRow>
                                         <TableCell>
-                                        <TextField
+                                        <label style={{display: 'block'}}>
+                                                <strong>Batsman A</strong>
+                                            </label>
+                                            <select
+                                                name="batsmanA"
+                                                value={score.batsmanA}
+                                                onChange={(e) => {
+                                                    setScore((prev) => {
+                                                    return { ...prev, batsmanA: e.target.value }
+                                                    })
+                                                }}
+                                                style={{}}
+                                            >
+                                                {playerTeam[score.teamA]?.map((player,i)=>(
+                                                <option key={i} value={player} label={player} />
+                                                ))}
+                                            </select>
+                                        {/* <TextField
                             
                             color="secondary"
                             id="outlined-basic"
@@ -480,7 +695,8 @@ const [score, setScore] = useState({
 
                             // error={formik.touched.batsmanA && Boolean(formik.errors.batsmanA)}
                             // helperText={formik.touched.batsmanA && formik.errors.batsmanA}
-                        />&nbsp;&nbsp;&nbsp;
+                        /> */}
+                        &nbsp;&nbsp;&nbsp;
                         <TextField
                             
                             color="secondary"
@@ -525,7 +741,24 @@ const [score, setScore] = useState({
                         />
                                         </TableCell>
                                         <TableCell>
-                                        <TextField
+                                        <label style={{display: 'block'}}>
+                                                <strong>Bowler A</strong>
+                                            </label>
+                                            <select
+                                                name="bowlerB"
+                                                value={score.bowlerB}
+                                                onChange={(e) => {
+                                                    setScore((prev) => {
+                                                    return { ...prev, bowlerB: e.target.value }
+                                                    })
+                                                }}
+                                                style={{}}
+                                            >
+                                                {playerTeam[score.teamB]?.map((player,i)=>(
+                                                <option key={i} value={player} label={player} />
+                                                ))}
+                                            </select>
+                                        {/* <TextField
                             
                             color="secondary"
                             id="outlined-basic"
@@ -545,7 +778,8 @@ const [score, setScore] = useState({
 
                             // error={formik.touched.bowlerB && Boolean(formik.errors.bowlerB)}
                             // helperText={formik.touched.bowlerB && formik.errors.bowlerB}
-                        />&nbsp;&nbsp;&nbsp;
+                        /> */}
+                        &nbsp;&nbsp;&nbsp;
                         <TextField
                             
                             color="secondary"
@@ -614,7 +848,25 @@ const [score, setScore] = useState({
 
                                     <TableRow>
                                         <TableCell>
-                                        <TextField
+                                            <label style={{display: 'block'}}>
+                                                <strong>Batsman B</strong>
+                                            </label>
+                                            <select
+                                                name="batsmanB"
+                                                value={score.batsmanB}
+                                                onChange={(e) => {
+                                                    setScore((prev) => {
+                                                    return { ...prev, batsmanB: e.target.value }
+                                                    })
+                                                }}
+                                                style={{}}
+                                            >
+                                                {playerTeam[score.teamA]?.map((player,i)=>(
+                                                <option key={i} value={player} label={player} />
+                                                ))}
+                                            </select>
+
+                                        {/* <TextField
                             
                             color="secondary"
                             id=""
@@ -634,7 +886,8 @@ const [score, setScore] = useState({
 
                             // error={formik.touched.batsmanB && Boolean(formik.errors.batsmanB)}
                             // helperText={formik.touched.batsmanB && formik.errors.batsmanB}
-                        />&nbsp;&nbsp;&nbsp;
+                        /> */}
+                        &nbsp;&nbsp;&nbsp;
                         <TextField
                             
                             color="secondary"
@@ -680,6 +933,25 @@ const [score, setScore] = useState({
                         />
                                         </TableCell>
                                         <TableCell>
+                                            <label style={{display: 'block'}}>
+                                                <strong>Bowler C</strong>
+                                            </label>
+                                            <select
+                                                name="bowlerC"
+                                                value={score.bowlerC}
+                                                onChange={(e) => {
+                                                    setScore((prev) => {
+                                                    return { ...prev, bowlerC: e.target.value }
+                                                    })
+                                                }}
+                                                style={{}}
+                                            >
+                                                {playerTeam[score.teamB]?.map((player,i)=>(
+                                                <option key={i} value={player} label={player} />
+                                                ))}
+                                            </select>
+
+{/* 
                                         <TextField
                             
                             color="secondary"
@@ -700,7 +972,8 @@ const [score, setScore] = useState({
 
                             // error={formik.touched.bowlerC && Boolean(formik.errors.bowlerC)}
                             // helperText={formik.touched.bowlerC && formik.errors.bowlerC}
-                        />&nbsp;&nbsp;&nbsp;
+                        /> */}
+                        &nbsp;&nbsp;&nbsp;
                         <TextField
                             
                             color="secondary"
@@ -768,7 +1041,7 @@ const [score, setScore] = useState({
                                     <TableRow>
                                         <TableCell colSpan="2" align="center">
                                         <TextField
-                            
+                            fullWidth
                             color="secondary"
                             id="outlined-basic"
                             label="Match Description"
@@ -793,7 +1066,7 @@ const [score, setScore] = useState({
                                     <TableRow>
                                         <TableCell colSpan="2" align="center">
                                         <TextField
-                            
+                            fullWidth
                             color="secondary"
                             id="outlined-basic"
                             label="Commentary"
